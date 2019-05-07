@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  progress_number: 1
+  progress_text: MyText
+  recipe_id: 1
+
+two:
+  progress_number: 1
+  progress_text: MyText
+  recipe_id: 1

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mr.Karaage</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <header>
+        <p class = "title-karaage"><%= link_to "Mr.karaage", homes_top_path, :style=>"color:white;" %></p>
+        <nav>
+              <ul class="nav-list">
+            <% if user_signed_in? %>
+                <li class="nav-list-item"><i class="fas fa-shopping-cart" style="color: white;" ></i>
+                  <%= link_to "レシピ一覧", recipes_path %>
+                <li class="nav-list-item"><i class="fas fa-compact-disc" style="color: white;" ></i>
+                  <%= link_to "お店を探す", shops_path %>
+                <li class="nav-list-item"><i class="fab fa-old-republic" style="color: white;" ></i>
+                <li class="nav-list-item"><i class="fas fa-home" style="color: white;" ></i>
+                <li class="nav-list-item"><i class="fas fa-sign-in-alt" style="color: white;" ></i>
+                  <%= link_to " ログアウト", destroy_user_session_path, method: :delete %></li>
+
+            <% else %>
+
+                <li class="nav-list-item"><i class="fas fa-compact-disc" style="color: white;" ></i>
+                  <%= link_to "レシピ一覧", recipes_path %>
+                <li class="nav-list-item"><i class="fab fa-old-republic" style="color: white;" ></i>
+                  <%= link_to "お店を探す", shops_path %>
+                <li class="nav-list-item"><i class="fas fa-axe-battle" style="color: white;" ></i>
+                  <%= link_to " 会員登録", new_user_registration_path %></li>
+                <li class="nav-list-item"><i class="fas fa-sign-in-alt" style="color: white;" ></i>
+                  <%= link_to " ログイン", new_user_session_path %></li>
+            <% end %>
+               </ul>
+         </nav>
+    </header>
+    <%= yield %>
+    <footer>
+      <h2 class="under-karaage">Mr.karaage</h2>
+    </footer>
+  </body>
+</html>
