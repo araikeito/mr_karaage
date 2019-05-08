@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_06_062528) do
+ActiveRecord::Schema.define(version: 2019_05_08_062303) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -33,16 +33,19 @@ ActiveRecord::Schema.define(version: 2019_05_06_062528) do
     t.integer "recipe_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "progress_image_id"
   end
 
   create_table "recipes", force: :cascade do |t|
     t.string "recipe_name"
-    t.text "recipe_image"
     t.string "meat_site"
     t.text "advice"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "recipe_image_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_recipes_on_deleted_at"
   end
 
   create_table "reviews", force: :cascade do |t|
@@ -54,15 +57,17 @@ ActiveRecord::Schema.define(version: 2019_05_06_062528) do
 
   create_table "shops", force: :cascade do |t|
     t.string "shop_name"
-    t.text "shop_image"
-    t.integer "shop_phone_number"
+    t.string "shop_phone_number"
     t.text "shop_address"
     t.string "business_hours"
-    t.integer "average_price"
+    t.string "average_price"
     t.text "shop_map"
     t.string "shop_taste"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "shop_image_id"
+    t.datetime "deleted_at"
+    t.index ["deleted_at"], name: "index_shops_on_deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -79,9 +84,12 @@ ActiveRecord::Schema.define(version: 2019_05_06_062528) do
     t.string "name"
     t.string "name_kana"
     t.string "address"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.boolean "admin", default: false
+    t.index ["deleted_at"], name: "index_users_on_deleted_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

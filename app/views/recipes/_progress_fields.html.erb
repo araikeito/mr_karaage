@@ -1,0 +1,12 @@
+<div class="nested-fields well well-compact">
+  <div class="form-group">
+    <%= link_to_remove_association "削除", f %>
+  </div>
+<div class="material">
+	<h3>工程写真</h3>
+	<%= f.attachment_field :progress_image %>
+	<h3>工程順序</h3>
+	<%= f.text_field :progress_number, placeholder:"例) １、２" %>
+	<h3>内容</h3>
+	<%= f.text_area :progress_text %>
+</div>

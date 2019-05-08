@@ -1,2 +1,48 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+
+<div class="container">
+	<div class="row">
+		<div class="recipe-show">
+			<h1><%= @recipe.recipe_name %></h1>
+			<%= attachment_image_tag @recipe, :recipe_image %>
+			<h3 class="recipe-item"> 部位
+				<%= @recipe.meat_site %>
+			</h3>
+			<% @recipe.materials.each do |material| %>
+			    <h3 class="recipe-item">
+				    <%= material.material_name %>
+				    <%= material.material_quantity %>
+				</h3>
+			<% end %>
+			<% @recipe.progresses.each do |progress| %>
+			    <h3 class="progress-item">
+			    	<%= progress.progress_number %>
+			    	  <h4 class="progress-text">
+				    	<%= progress.progress_text %>
+				      </h4>
+			    </h3>
+			<% end %>
+
+			<% if @recipe.favorited_by?(current_user) %>
+			  <li>
+			    <%= link_to recipe_favorite_path(@recipe), method: :delete do %>
+			      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+			      <%= @recipe.favorites.count %> いいね
+			    <% end %>
+			  </li>
+			<% else %>
+			  <li>
+			    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
+			      <i class="fa fa-heart-o" aria-hidden="true"></i>
+			      <%= @recipe.favorites.count %> いいね
+			    <% end %>
+			  </li>
+			<% end %>
+			<%= link_to "レシピを編集する", edit_recipe_path(@recipe.id) %>
+			<%= link_to "レシピを削除する", recipe_path(@recipe.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+
+			<div class="recipe-back">
+				<%= link_to "レシピ一覧に戻る", recipes_path %>
+			</div>
+		</div>
+	</div>
+</div>

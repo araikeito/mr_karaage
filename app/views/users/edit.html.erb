@@ -1,2 +1,22 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>ユーザー編集</h1>
+
+<div class="container">
+	<div class="row">
+		<div class="edit-user">
+
+			<%= form_for(@user) do |f| %>
+			  <h2>名前</h2>
+			  <%= f.text_field :name %>
+			  <h2>名前(カナ)</h2>
+			  <%= f.text_field :name_kana %>
+			  <h2>メールアドレス</h2>
+			  <%= f.text_field :email %>
+			  <h2>住所</h2>
+			  <%= f.text_field :address %>
+			  <h2>電話番号</h2>
+			  <%= f.text_field :phone_number %>
+			  <h4><%= f.submit '変更登録' %></h4>
+			<% end %>
+	    </div>
+    </div>
+</div>

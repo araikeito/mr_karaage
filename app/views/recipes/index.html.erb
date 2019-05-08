@@ -1,2 +1,32 @@
-<h1>Recipes#index</h1>
-<p>Find me in app/views/recipes/index.html.erb</p>
+
+<div class="recipe-index">
+	<div class="recipe-index-top">
+		<p class="recipe-top-font">見出し</p>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5">
+				<% @rank.each.with_index(1) do |rank, i| %>
+				    <div class="recipe-ranking">
+				    	<div class="recipe-rank">
+						  <%= "第#{i}位" %>
+						</div>
+						<div class="rank-name">
+						  <%= rank.recipe_name %>
+						</div>
+					</div>
+				<% end %>
+			</div>
+			<div class="col-lg-7">
+				<% @recipes.each do |recipe| %>
+			        <div claass="recipe-feace">
+						<%= attachment_image_tag recipe, :recipe_image, size: "180x180" %>
+						<%= link_to recipe.recipe_name, recipe_path(recipe.id) %>
+					</div>
+					<% end %>
+					<%= paginate @recipes %>
+			</div>
+		</div>
+	</div>
+</div>

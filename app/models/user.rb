@@ -4,7 +4,10 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-      has_many :favorites
-      has_many :reviews
-      has_many :recipes
+      has_many :favorites, dependent: :destroy
+      has_many :reviews, dependent: :destroy
+      has_many :recipes, dependent: :destroy
+
+
+      acts_as_paranoid
 end
