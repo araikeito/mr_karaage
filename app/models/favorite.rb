@@ -1,5 +1,6 @@
-class Favorite < ApplicationRecord
+# frozen_string_literal: true
 
-	belongs_to :user
-	belongs_to :recipe
+class Favorite < ApplicationRecord
+  belongs_to :user
+  belongs_to :recipe
 end

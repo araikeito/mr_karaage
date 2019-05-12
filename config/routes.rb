@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+  post '/rate' => 'rater#create', :as => 'rate'
   get 'homes/top'
   devise_for :users
   resources :users do
@@ -8,10 +11,10 @@ Rails.application.routes.draw do
     end
   end
   resources :recipes do
-      resources :favorites, only:[:create, :destroy]
+    resources :favorites, only: %i[create destroy]
   end
   resources :shops do
-      resources :reviews, only:[:create, :destroy]
+    resources :reviews, only: %i[create destroy]
   end
 
   root 'homes#top'

@@ -1,2 +1,34 @@
-<h1>Shops#index</h1>
-<p>Find me in app/views/shops/index.html.erb</p>
+	<div class="shop-index">
+		<div class="shop-index-top">
+			<p class="shop-top-font">見出し</p>
+		</div>
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-5">
+				</div>
+				<div class="col-lg-7">
+					<%= search_form_for @search do |f| %>
+					<%= f.check_box :soysauce_eq, {}, checked_value = "1", uncheced_value = nil %>
+				    <%= f.label :soysauce, "しょうゆ" %>
+				    <%= f.check_box :salt_eq, {}, checked_value = "1", uncheced_value = nil %>
+				    <%= f.label :salt, "塩" %>
+				    <%= f.check_box :other_eq, {}, checked_value = "1", uncheced_value = nil %>
+				    <%= f.label :other, "その他" %>
+					<%= f.submit "検索" %>
+					<% end %>
+					<% @shops.each do |shop| %>
+				        <div claass="recipe-feace">
+				        	<div class="recipe-feace-item">
+								<%= attachment_image_tag shop, :shop_image, size: "180x180" %>
+								<span class="feace-item-show"><%= link_to shop.shop_name, shop_path(shop.id) %></span>
+							    <div class="average-ranking"><%= rating_for shop, 'shop_name', imdb_avg: true %>
+							    </div>
+						    </div>
+						</div>
+						<% end %>
+						<%= paginate @shops %>
+				</div>
+			</div>
+		</div>
+	</div>

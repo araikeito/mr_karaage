@@ -1,35 +1,37 @@
-<h1>レシピ投稿</h1>
+	<h1>レシピ投稿</h1>
 
-<div class="container">
-	<div class="row">
-		<div class="col-lg-10 col-lg-offset-1">
-			<div class="recipe-new">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 col-lg-offset-1">
+				<div class="recipe-new">
 
-				<%= form_for(@recipe) do |f| %>
-				  <h2>タイトル</h2>
-				    <%= f.text_field :recipe_name, placeholder:"例) 男の唐揚げ" %>
-				  <h2>出来上がり画像</h2>
-				    <%= f.attachment_field :recipe_image %>
-				  <h2>お肉部位</h2>
-				  	<%= f.select :meat_site, [["もも肉", "もも肉"], ["むね肉", "むね肉"], ["なんこつ", "なんこつ"], ["手羽先", "手羽先"], ["せせり", "せせり"], ["とり皮", "とり皮"], ["砂肝", "砂肝"]], :prompt => "選択してください" %>
-				  <h2>材料 / 分量</h2>
-				  	<%= f.fields_for :materials do |material| %>
-				  	<%= render 'material_fields', f: material %>
-				  	<% end %>
-				  	<div id="links">
-						<%= link_to_add_association '材料追加',f, :materials %>
-					</div>
-				  <h2>工程順序 / 内容</h2>
-				    <%= f.fields_for :progresses do |progress| %>
-				    <%= render 'progress_fields', f: progress %>
-				    <% end %>
-				    <div id="links">
-				    	<%= link_to_add_association '工程を追加する',f, :progresses %>
-				    </div>
+					<%= form_for(@recipe) do |f| %>
+					  <h2>タイトル</h2>
+					    <%= f.text_field :recipe_name, placeholder:"例) 男の唐揚げ" %>
+					  <h2>出来上がり画像</h2>
+					    <%= f.attachment_field :recipe_image %>
+					  <h2>お肉部位</h2>
+					  	<%= f.select :meat_site, [["もも肉", "もも肉"], ["むね肉", "むね肉"], ["なんこつ", "なんこつ"], ["手羽先", "手羽先"], ["せせり", "せせり"], ["とり皮", "とり皮"], ["砂肝", "砂肝"]], :prompt => "選択してください" %>
+					  <h2>材料 / 分量</h2>
+					  	<%= f.fields_for :materials do |material| %>
+					  	<%= render 'material_fields', f: material %>
+					  	<% end %>
+					  	<div id="links">
+							<%= link_to_add_association '材料追加',f, :materials, class: "btn btn-lg btn-primary" %>
+						</div>
+					  <h2>工程順序 / 内容</h2>
+					    <%= f.fields_for :progresses do |progress| %>
+					    <%= render 'progress_fields', f: progress %>
+					    <% end %>
+					    <div id="links">
+					    	<%= link_to_add_association '工程を追加する',f, :progresses, class: "btn btn-lg btn-primary" %>
+					    </div>
+					  <h2> 最後に一言アドバイス！</h2>
+					    <%= f.text_field :advice %>
 
-				    <h3><%= f.submit '投稿する' %></h3>
-				<% end %>
-		    </div>
-		</div>
-    </div>
-</div>
+					    <h3><%= f.submit '投稿する' %></h3>
+					<% end %>
+			    </div>
+			</div>
+	    </div>
+	</div>

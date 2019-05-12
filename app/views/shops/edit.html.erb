@@ -1,2 +1,30 @@
-<h1>Shops#edit</h1>
-<p>Find me in app/views/shops/edit.html.erb</p>
+<div class="container">
+	<div class="row">
+		<div class="shop-new">
+			<%= form_for(@shop) do |f| %>
+			  <h3>店舗名</h3>
+			    <%= f.text_field :shop_name %>
+			  <h3>店舗画像</h3>
+			    <%= f.attachment_field :shop_image %>
+			  <h3>電話番号</h3>
+			    <%= f.text_field :shop_phone_number %>
+			  <h3>住所</h3>
+			    <%= f.text_area :shop_address %>
+			  <h3>営業時間</h3>
+			    <%= f.text_area :business_hours %>
+			  <h3>平均予算</h3>
+			    <%= f.text_field :average_price %>
+			  <h3>店の系統</h3>
+			    <%= f.check_box :shop_taste %>
+				<%= f.label :shop_taste, "しょうゆ" %>
+				<%= f.check_box :shop_taste %>
+				<%= f.label :shop_taste, "塩" %>
+				<%= f.check_box :shop_taste %>
+				<%= f.label :shop_taste, "その他" %>
+			  <div class="shop-item">
+			    <%= f.submit "店舗編集" %>
+			  </div>
+			<% end %>
+		</div>
+	</div>
+</div>

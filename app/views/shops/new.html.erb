@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row">
 		<div class="shop-new">
-			<%= form_for(@shop) do |f| %>
+			<%= form_for(@shop,:url => {:action => 'create'}) do |f| %>
 			  <h3>店舗名</h3>
 			    <%= f.text_field :shop_name %>
 			  <h3>店舗画像</h3>
@@ -16,77 +16,16 @@
 			  <h3>平均予算</h3>
 			    <%= f.text_field :average_price %>
 			  <h3>店の系統</h3>
-			    <%= f.check_box :shop_taste %>
-				<%= f.label :shop_taste, "しょうゆ" %>
-				<%= f.check_box :shop_taste %>
-				<%= f.label :shop_taste, "塩" %>
-				<%= f.check_box :shop_taste %>
-				<%= f.label :shop_taste, "その他" %>
+			    <%= f.check_box :soysauce %>
+			    <%= f.label :soysauce, "しょうゆ" %>
+			    <%= f.check_box :salt %>
+			    <%= f.label :salt, "塩" %>
+			    <%= f.check_box :other %>
+			    <%= f.label :other, "その他" %>
 			  <div class="shop-item">
 			    <%= f.submit "店舗登録" %>
 			  </div>
 			<% end %>
-
-
-
-			<h2>gmap</h2>
-
-			<!-- 地名入力用のinputを追加 -->
-			<input id="address" type="textbox" value="Sydney, NSW">
-
-			<!-- buttonをクリックしたらcodeAddressを実行　-->
-			<input type="button" value="Encode" onclick="codeAddress()">
-			<div id='map'>
-			</div>
-
-			<style>
-			#map{
-			  height: 500px;
-			}
-			</style>
-
-			<script>
-			/*
-			mapを関数の外で定義(codeAddressでも使うため)
-			geocoderを用意
-			*/
-
-			let map
-			let geocoder
-
-			function initMap(){
-			  // geocoderを初期化
-			  geocoder = new google.maps.Geocoder()
-
-				  map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: 35.681236, lng: 139.767125},
-			  zoom: 15
-			  });
-			}
-
-			function codeAddress(){
-			  // 入力を取得
-			  let inputAddress = document.getElementById('address').value;
-
-			  // geocodingしたあとmapを移動
-			  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-			    if (status == 'OK') {
-			      console.log(results[0].geometry.location)
-			　　　　　　　　　　　　// map.setCenterで地図が移動
-			      map.setCenter(results[0].geometry.location);
-
-			　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-			      var marker = new google.maps.Marker({
-			          map: map,
-			          position: results[0].geometry.location
-			      });
-			    } else {
-			      alert('Geocode was not successful for the following reason: ' + status);
-			    }
-			  });
-			}
-			</script>
-			<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfKJcRHzMaupS-SaHlBviDZdshUTBL_iA&callback=initMap" async defer></script>
 		</div>
 	</div>
 </div>

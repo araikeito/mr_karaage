@@ -1,6 +1,5 @@
 <div class="home">
 	<div class="home-header">
-		<P class="home-title">見出し</P>
 	</div>
 	<div class="home-center clearfix">
 		<div class="home-center-right">
@@ -8,10 +7,21 @@
 			</div>
 		</div>
 		<div class="home-center-left">
-		   <%= link_to "店を探す", shops_path, :style=>"color:white;" %>
+			<div class="home-center-left-box">
+				<p class="home-center-left-text">色んな唐揚げを掲載しています。<br>
+					自分好みの唐揚げも見つかるはず！<br>
+				    ぜひ寄っていってください！！</p>
+				<div class="home-shop-box">
+		           <%= link_to "店を探す", shops_path, class: "btn btn-lg btn-success" %>
+		        </div>
+		    </div>
 	    </div>
 	</div>
-	<div class="home-under">
-		<%= link_to "レシピを見る", recipes_path %>
+	<div class="home-under clearfix">
+		<div class="home-under-right">
+			<div class="home-under-right-image">
+			</div>
+		</div>
+		<%= link_to "レシピを見る", recipes_path, class: "btn btn-lg btn-success" %>
 	</div>
 </div>

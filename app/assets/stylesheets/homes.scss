@@ -12,11 +12,9 @@
 
 .home-header{
 	height: 500px;
-}
-
-.home-title{
-	text-align: center;
-	line-height: 500px;
+	background-image: url(img/IMG_2997.JPG);
+	background-size: cover;
+	background-position: center;
 }
 
 .home-center{
@@ -27,14 +25,15 @@
 .home-center-right{
 	width: 50%;
 	height: 400px;
-	background-color: blue;
 	padding-top: 100px;
+	float: left;
 }
 
 .home-right-image{
 	width: 300px;
 	height: 200px;
-	background-color: white;
+	background-image: url(img/183160_m.jpg);
+	background-size: cover;
 	margin: 0 auto;
 }
 
@@ -45,5 +44,24 @@
 
 .home-under{
 	height: 400px;
-	background-color: yellow;
+}
+
+.home-under-right{
+	width: 50%;
+	height: 400px;
+	padding-top: 100px;
+	float: left;
+}
+
+.home-under-right-image{
+	width: 300px;
+	height: 200px;
+	background-image: url(img/karaage46202.JPG);
+	background-size: cover;
+	margin: 0 auto;
+}
+
+
+.home-center-left-box{
+	text-align: center;
 }

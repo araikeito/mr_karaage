@@ -4,7 +4,7 @@
     <title>Mr.Karaage</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -13,6 +13,10 @@
 
     <header>
         <p class = "title-karaage"><%= link_to "Mr.唐揚げ", homes_top_path %></p>
+        <% if user_signed_in? %>
+               <span class="user_name"><i class="fas fa-user-alt"></i>&nbsp;&nbsp;
+                <%= current_user.name %> さん</span>
+             <% end %>
         <nav>
               <ul class="nav-list">
             <% if user_signed_in? %>
@@ -20,6 +24,8 @@
                   <%= link_to "レシピ一覧", recipes_path %>
                 <li class="nav-list-item"><i class="fas fa-compact-disc" style="color: white;" ></i>
                   <%= link_to "お店を探す", shops_path %>
+                <li class="nav-list-item"><i class="fas fa-compact-disc" style="color: white;" ></i>
+                  <%= link_to "レシピ投稿", new_recipe_path %>
                 <li class="nav-list-item"><i class="fab fa-old-republic" style="color: white;" ></i>
                   <%= link_to "マイページ", user_path(current_user.id) %>
                 <li class="nav-list-item"><i class="fas fa-sign-in-alt" style="color: white;" ></i>

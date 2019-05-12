@@ -1,5 +1,6 @@
-class RecipesController < ApplicationController
+# frozen_string_literal: true
 
+class RecipesController < ApplicationController
   def index
     @recipes = Recipe.all.page(params[:page]).per(10).reverse_order
     @rank = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(5).pluck(:recipe_id))
@@ -39,9 +40,8 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:recipe_name, :recipe_image, :meat_site,
-       materials_attributes: [:id, :material_name, :material_quantity, :_destroy],
-        progresses_attributes: [:id, :progress_number, :progress_image, :progress_text, :_destroy])
+    params.require(:recipe).permit(:recipe_name, :recipe_image, :meat_site, :advice,
+                                   materials_attributes: %i[id material_name material_quantity _destroy],
+                                   progresses_attributes: %i[id progress_number progress_image progress_text _destroy])
   end
-
 end

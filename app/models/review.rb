@@ -1,5 +1,6 @@
-class Review < ApplicationRecord
+# frozen_string_literal: true
 
-	belongs_to :user
-	belongs_to :shop
+class Review < ApplicationRecord
+  belongs_to :user
+  belongs_to :shop
 end

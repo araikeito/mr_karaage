@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   def index
     @users = User.all.page(params[:page]).per(5).reverse_order
@@ -17,12 +19,13 @@ class UsersController < ApplicationController
     redirect_to user_path(user.id)
   end
 
-  def delete
-  end
+  def delete; end
 
   private
+
   def user_params
     params.require(:user).permit(
-      :email, :name, :name_kana, :address, :phone_number)
+      :email, :name, :name_kana, :address, :phone_number
+    )
   end
 end

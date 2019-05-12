@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 class Progress < ApplicationRecord
+  belongs_to :recipe
 
-	belongs_to :recipe
-
-	attachment :progress_image
+  attachment :progress_image
 end
