@@ -3,5 +3,5 @@
 class Progress < ApplicationRecord
   belongs_to :recipe
 
-  attachment :progress_image
+  attachment :material_image
 end

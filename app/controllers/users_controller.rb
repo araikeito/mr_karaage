@@ -19,7 +19,20 @@ class UsersController < ApplicationController
     redirect_to user_path(user.id)
   end
 
-  def delete; end
+  def destroy
+    @user = User.find(params[:id])
+    @recipes = Recipe.find_by(user_id: params[:id])
+    flash[:notice] = "ユーザーを削除しました！"
+
+    if @recipes.nil?
+      @user.destroy
+      redirect_to root_path
+    else
+      @recipes.destroy
+      @user.destroy
+      redirect_to root_path
+    end
+  end
 
   private
 

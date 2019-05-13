@@ -1,21 +1,23 @@
-<h1>ユーザー一覧</h1>
+<div class="user-index-top">
+	<h1>ユーザー一覧</h1>
 
-<div class="container">
-	<div class="row">
+	<div class="container">
+		<div class="row">
 
 
-	<% @users.each do |user| %>
-			<table class="table table-striped">
-				<th>名前</th>
-				<th><%= link_to user.name, user_path(user.id) %></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-				<th></th>
-			</table>
-	<% end %>
-	  <%= paginate @users %>
-    </div>
+		<% @users.each do |user| %>
+				<table class="table table-striped">
+					<th>名前</th>
+					<th><%= link_to user.name, user_path(user.id) %></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</table>
+		<% end %>
+		  <%= paginate @users %>
+	    </div>
+	</div>
 </div>

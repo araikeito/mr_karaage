@@ -8,6 +8,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @review = Review.new
   end
 
   def create
@@ -41,7 +42,7 @@ class RecipesController < ApplicationController
 
   def recipe_params
     params.require(:recipe).permit(:recipe_name, :recipe_image, :meat_site, :advice,
-                                   materials_attributes: %i[id material_name material_quantity _destroy],
-                                   progresses_attributes: %i[id progress_number progress_image progress_text _destroy])
+                                   materials_attributes: [:id, :material_name, :material_quantity, :_destroy],
+                                   progresses_attributes: [:id, :progress_number, :material_image, :progress_text, :_destroy])
   end
 end

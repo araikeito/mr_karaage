@@ -1,10 +1,15 @@
-<div class="container">
-	<div class="row">
-		<h2>名前 <%= @user.name %></h2>
-		<h2>名前(カナ) <%= @user.name_kana %></h2>
-		<h2>メールアドレス　<%= @user.email %></h2>
-		<h2>住所　<%= @user.address %></h2>
-		<h2>電話番号　<%= @user.phone_number %></h2>
+<div class="user-show-top">
+	<div class="container">
+		<div class="row">
+			<h2>名前 <%= @user.name %></h2>
+			<h2>名前(カナ) <%= @user.name_kana %></h2>
+			<h2>メールアドレス　<%= @user.email %></h2>
+			<h2>住所　<%= @user.address %></h2>
+			<h2>電話番号　<%= @user.phone_number %></h2>
+		</div>
+		<div class="user-show-link">
+		<%= link_to "編集", edit_user_path(@user.id), class: "btn btn-lg btn-success" %>
+		<%= link_to "退会手続き", user_path(@user.id), class: "btn btn-lg btn-danger", method: :delete, "data-confirm" => "本当に退会してよろしいですか？" %>
+	    </div>
 	</div>
-	<%= link_to "編集", edit_user_path(@user.id) %>
 </div>

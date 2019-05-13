@@ -2,5 +2,8 @@
 
 class Review < ApplicationRecord
   belongs_to :user
-  belongs_to :shop
+  belongs_to :recipe
+
+  validates :review_text, presence: true
+
 end

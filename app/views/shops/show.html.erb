@@ -1,39 +1,39 @@
 
 
-<div class="shop-show">
-	<div class="shop-show-top">
-		<h1 class="shop-show-top-font">店舗詳細</h1>
+	<div class="shop-show">
+		<div class="shop-show-top">
+			<h1 class="shop-show-top-font">店舗詳細</h1>
+		</div>
+
+	    <div class="container">
+	    	<div class="row">
+		        <div class="shop-show-main">
+		        	<h1><%= @shop.shop_name %></h1>
+		        	<%= attachment_image_tag @shop, :shop_image, size: '700x400' %>
+		        </div>
+		        	<h3 class="shop-item"> 住所
+		        		<%= @shop.shop_address %>
+		        	</h3>
+		        	<h3 class="shop-item"> 電話番号
+		        		<%= @shop.shop_phone_number %>
+		        	</h3>
+		        	<h3 class="shop-item"> 営業時間
+		        		<%= @shop.business_hours %>
+		        	</h3>
+		        	<h3 class="shop-item"> 平均予算
+		        		<%= @shop.average_price %>
+		        	</h3>
+		        	<h3>店の評価 : <%= rating_for @shop, 'shop_name', disable_after_rate: false %></h3>
+
+		        	<iframe src="http://maps.google.co.jp/maps?q=<%= @shop.shop_address %>&output=embed&t=m&z=16&hl=ja" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="1170" height="500"></iframe>
+	                    <div class="shop-show-edit">
+	                    	<%= link_to "店舗編集画面へ", edit_shop_path(@shop.id), class: "btn-flat-border" %>
+	                    	<%= link_to "この店舗を削除する", shop_path(@shop.id), class: "btn-flat-delete", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+	                    </div>
+	                    <div class="shop-show-index">
+						   <%= link_to "店舗一覧に戻る", shops_path, class: "btn-flat-success" %>class: "btn-flat-border"
+					    </div>
+		    </div>
+		</div>
+
 	</div>
-
-    <div class="container">
-    	<div class="row">
-	        <div class="shop-show-main">
-	        	<h1><%= @shop.shop_name %></h1>
-	        	<%= attachment_image_tag @shop, :shop_image, size: '700x400' %>
-	        </div>
-	        	<h3 class="shop-item"> 住所
-	        		<%= @shop.shop_address %>
-	        	</h3>
-	        	<h3 class="shop-item"> 電話番号
-	        		<%= @shop.shop_phone_number %>
-	        	</h3>
-	        	<h3 class="shop-item"> 営業時間
-	        		<%= @shop.business_hours %>
-	        	</h3>
-	        	<h3 class="shop-item"> 平均予算
-	        		<%= @shop.average_price %>
-	        	</h3>
-	        	<h3>店の評価 : <%= rating_for @shop, 'shop_name', disable_after_rate: false %></h3>
-
-	        	<iframe src="http://maps.google.co.jp/maps?q=<%= @shop.shop_address %>&output=embed&t=m&z=16&hl=ja" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="1170" height="500"></iframe>
-                    <div class="shop-show-edit">
-                    	<%= link_to "店舗編集画面へ", edit_shop_path(@shop.id), class: "btn btn-lg btn-success" %>
-                    	<%= link_to "この店舗を削除する", shop_path(@shop.id), class: "btn btn-lg btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
-                    </div>
-                    <div class="shop-show-index">
-					   <%= link_to "店舗一覧に戻る", shops_path, class: "btn btn-lg btn-primary" %>
-				    </div>
-	    </div>
-	</div>
-
-</div>

@@ -13,17 +13,26 @@
 				    <%= material.material_quantity %>
 				</h3>
 			<% end %>
-			<% @recipe.progresses.each do |progress| %>
-			    <h3 class="progress-item">
-			    	<%= progress.progress_number %>
-			    	  <h4 class="progress-text">
-				    	<%= progress.progress_text %>
-				      </h4>
-			    </h3>
+			<div class="progress-each clearfix">
+			<% @recipe.progresses.each do |f| %>
+				<div class="progress-box">
+					<div class="progress-image">
+						<%= attachment_image_tag f, :material_image, size: "200x200", fallback: "noimage.png" %>
+					</div>
+				    <h3 class="progress-item">
+					    	<%= f.progress_number %>
+					    	  <div class="progress-text">
+						    	<%= f.progress_text %>
+						      </div>
+				    </h3>
+				</div>
+			</div>
 			<% end %>
-			<h3 class="recipe-advice"> 一言アドバイス！
-				<h4><%= @recipe.advice %></h4>
-			</h3>
+			<div class="advice-box">
+				<h3 class="recipe-advice"> 一言アドバイス！
+					<h4><%= @recipe.advice %></h4>
+				</h3>
+		    </div>
 
 			<% if @recipe.favorited_by?(current_user) %>
 			  <li>
@@ -40,13 +49,27 @@
 			    <% end %>
 			  </li>
 			<% end %>
+			<%= form_for [@recipe,@review] do |f| %>
+			<div class="row">
+		        <div class="col-sm-12">
+		            <%= f.text_area :review_text, rows:'5', class: "form-control",placeholder: "コメントをここに" %>
+		        </div>
+		    </div>
+		    <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+			<% end %>
+			<% @recipe.reviews.each do |review| %>
+			<%= review.user.name %>
+			<%= review.created_at.strftime('%Y/%m/%d') %>
+			<%= review.review_text %>
+			<%= link_to "削除", recipe_reviews_path(current_user.reviews.ids), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+			<% end %>
 			<div class="show-link-item">
-				<%= link_to "レシピを編集する", edit_recipe_path(@recipe.id), class: "btn btn-success" %>
-				<%= link_to "レシピを削除する", recipe_path(@recipe.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+				<%= link_to "レシピを編集する", edit_recipe_path(@recipe.id), class: "btn-flat-border" %>
+				<%= link_to "レシピを削除する", recipe_path(@recipe.id), class: "btn-flat-delete", method: :delete, "data-confirm" => "本当に削除しますか？" %>
 		    </div>
 
 			<div class="show-recipe-back">
-				<%= link_to "レシピ一覧に戻る", recipes_path, class: "btn btn-primary" %>
+				<%= link_to "レシピ一覧に戻る", recipes_path, class: "btn-flat-success" %>
 			</div>
 		</div>
 	</div>

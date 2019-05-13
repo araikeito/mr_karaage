@@ -1,7 +1,7 @@
 <div class="container">
 	<div class="row">
 		<div class="shop-new">
-			<%= form_for(@shop) do |f| %>
+			<%= form_for(@shop,:url => {:action => 'update'}) do |f| %>
 			  <h3>店舗名</h3>
 			    <%= f.text_field :shop_name %>
 			  <h3>店舗画像</h3>
@@ -15,12 +15,12 @@
 			  <h3>平均予算</h3>
 			    <%= f.text_field :average_price %>
 			  <h3>店の系統</h3>
-			    <%= f.check_box :shop_taste %>
-				<%= f.label :shop_taste, "しょうゆ" %>
-				<%= f.check_box :shop_taste %>
-				<%= f.label :shop_taste, "塩" %>
-				<%= f.check_box :shop_taste %>
-				<%= f.label :shop_taste, "その他" %>
+			    <%= f.check_box :soysauce %>
+			    <%= f.label :soysauce, "しょうゆ" %>
+			    <%= f.check_box :salt %>
+			    <%= f.label :salt, "塩" %>
+			    <%= f.check_box :other %>
+			    <%= f.label :other, "その他" %>
 			  <div class="shop-item">
 			    <%= f.submit "店舗編集" %>
 			  </div>

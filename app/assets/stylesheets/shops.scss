@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.shop-new{
+	min-height: 100vh;
+    position: relative;
+}
+
+.shop-index{
+	min-height: 100vh;
+    position: relative;
+}
+
+.shop-show{
+	min-height: 100vh;
+    position: relative;
+}
+
 .shop-index-top{
 	height: 400px;
 }
@@ -28,4 +44,9 @@
 .shop-show-index{
 	text-align: center;
 }
+
+.shop-index-ranking{
+	font-size: 30px;
+}
+
 

@@ -7,7 +7,7 @@
 
 					<%= form_for(@recipe) do |f| %>
 					  <h2>タイトル</h2>
-					    <%= f.text_field :recipe_name, placeholder:"例) 男の唐揚げ" %>
+					    <%= f.text_field :recipe_name, placeholder:"例) 男の唐揚げ", class: "recipe-name-form" %>
 					  <h2>出来上がり画像</h2>
 					    <%= f.attachment_field :recipe_image %>
 					  <h2>お肉部位</h2>
@@ -27,7 +27,7 @@
 					    	<%= link_to_add_association '工程を追加する',f, :progresses, class: "btn btn-lg btn-primary" %>
 					    </div>
 					  <h2> 最後に一言アドバイス！</h2>
-					    <%= f.text_field :advice %>
+					    <%= f.text_field :advice, placeholder:"例) 揚げすぎるとかたくなるよ！", class: "advice-form" %>
 
 					    <h3><%= f.submit '投稿する' %></h3>
 					<% end %>

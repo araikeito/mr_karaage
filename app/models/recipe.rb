@@ -9,6 +9,7 @@ class Recipe < ApplicationRecord
 
   belongs_to :user
   has_many :favorites, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   attachment :recipe_image
 
@@ -16,5 +17,4 @@ class Recipe < ApplicationRecord
     favorites.where(user_id: user.id).exists?
   end
 
-  acts_as_paranoid
 end

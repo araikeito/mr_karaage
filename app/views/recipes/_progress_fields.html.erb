@@ -4,9 +4,9 @@
   </div>
 <div class="material">
 	<h3>工程写真</h3>
-	<%= f.attachment_field :progress_image %>
+	<%= f.attachment_field :material_image %>
 	<h3>工程順序</h3>
 	<%= f.text_field :progress_number, placeholder:"例) １、２" %>
 	<h3>内容</h3>
-	<%= f.text_area :progress_text %>
+	<%= f.text_area :progress_text, class: "progress-text-form" %>
 </div>
