@@ -1,18 +1,26 @@
 <div class="user-show-top">
 	<div class="container">
 		<div class="row">
-			<div class="image-box">
-			    <%= attachment_image_tag @user, :user_image, size: '200x200', class: "user-image" %>
+			<div class="profile-box clearfix">
+				<div class="image-box">
+				    <%= attachment_image_tag @user, :user_image, size: '200x200', class: "user-image" %>
+			    </div>
+			    <div class="user-box">
+				    <h2>名前 <%= @user.name %></h2>
+			    </div>
+			    <div class="user-box">
+				    <h2>名前(カナ) <%= @user.name_kana %></h2>
+			    </div>
+			    <div class="user-box">
+				    <h2>自己紹介文 : <%= @user.introduction %></h2>
+			    </div>
+			    <div class="user-box">
+					<% if @user.id == current_user.id %>
+						<%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn-flat-success" %>
+				    <% end %>
+	            </div>
 		    </div>
-			<h2>名前 <%= @user.name %></h2>
-			<h2>名前(カナ) <%= @user.name_kana %></h2>
-			<h2>自己紹介文 : <%= @user.introduction %></h2>
 		</div>
-		<% if @user.id == current_user.id %>
-			<div class="user-show-link">
-			<%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn-flat-success" %>
-		    </div>
-	    <% end %>
 
 	    <div class="row">
 	    	<div class="user-recipe">

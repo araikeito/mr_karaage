@@ -15,10 +15,22 @@ class RecipesController < ApplicationController
   end
 
   def create
-    recipe = Recipe.new(recipe_params)
-    recipe.user_id = current_user.id
-    recipe.save
-    redirect_to recipes_path
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user_id = current_user.id
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to recipe, notice: '投稿しました。' }
+        format.json { render :show, status: :created, location: @recipe }
+        format.js { @status = "success"}
+      else
+        format.html { render :new }
+        format.json { render json: @recipe.errors, status: :unprocessable_entity }
+        format.js { @status = "fail" }
+      end
+    end
+    # recipe.user_id = current_user.id
+    # recipe.save
+    # redirect_to recipes_path
   end
 
   def destroy
@@ -29,6 +41,10 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = Recipe.new
+    respond_to do |format|
+      format.html{ redirect_to @recipe, notice: 'Recipe was successfully created.' }
+      format.js {}
+    end
   end
 
   def edit

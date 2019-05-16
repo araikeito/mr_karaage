@@ -3,6 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+
 .edit-user{
 	text-align: center;
 	min-height: 100vh;
@@ -12,6 +19,21 @@
 .user-show-top{
   min-height: 100vh;
   position: relative;
+}
+
+.profile-box{
+	margin-top: 50px;
+}
+
+.image-box{
+	width: 300px;
+	height: 300px;
+	float:left;
+	text-align: center;
+}
+
+.user-box{
+	margin-top: 40px;
 }
 
 .user-index-top{

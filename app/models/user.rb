@@ -11,6 +11,14 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_many :review_replays, dependent: :destroy
 
+  validates :email, presence: true
+  validates :name, presence: true
+  validates :name_kana, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+
+
+
   attachment :user_image
 
   acts_as_paranoid

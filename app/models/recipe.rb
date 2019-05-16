@@ -12,6 +12,10 @@ class Recipe < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :review_replays, dependent: :destroy
 
+  validates :recipe_name, length: { in: 5..30 }
+  validates :meat_site, presence: true
+  validates :advice, length: { in: 1..30 }
+
   attachment :recipe_image
 
   def favorited_by?(user)
