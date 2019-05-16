@@ -1,0 +1,17 @@
+<% unless reviews.present? %>
+  <h>コメントはまだありません。気軽にコメントしてみましょう！</p>
+<% end %>
+
+<% reviews.each do |review| %>
+    <% unless review.id.nil? %>
+        <p><%= review.user.name %> さんのコメント</p>
+        <div class="comment-content">
+            <p>内容：<%= review.review_text %></p>
+            <% if review.user == current_user %>
+                <p class="comment-delete"><%= link_to 'コメントを削除する', recipe_review_path(review.recipe_id, review.id), method: :delete, remote: true %><i class="fa fa-trash fa-fw"></i>
+                </p>
+            <% end %>
+        </div>
+    <% end %>
+    <%= render partial: 'review_replays/index', locals: { review: review} %>
+<% end %>

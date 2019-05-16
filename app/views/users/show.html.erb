@@ -1,15 +1,33 @@
 <div class="user-show-top">
 	<div class="container">
 		<div class="row">
+			<div class="image-box">
+			    <%= attachment_image_tag @user, :user_image, size: '200x200', class: "user-image" %>
+		    </div>
 			<h2>名前 <%= @user.name %></h2>
 			<h2>名前(カナ) <%= @user.name_kana %></h2>
-			<h2>メールアドレス　<%= @user.email %></h2>
-			<h2>住所　<%= @user.address %></h2>
-			<h2>電話番号　<%= @user.phone_number %></h2>
+			<h2>自己紹介文 : <%= @user.introduction %></h2>
 		</div>
-		<div class="user-show-link">
-		<%= link_to "編集", edit_user_path(@user.id), class: "btn btn-lg btn-success" %>
-		<%= link_to "退会手続き", user_path(@user.id), class: "btn btn-lg btn-danger", method: :delete, "data-confirm" => "本当に退会してよろしいですか？" %>
+		<% if @user.id == current_user.id %>
+			<div class="user-show-link">
+			<%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn-flat-success" %>
+		    </div>
+	    <% end %>
+
+	    <div class="row">
+	    	<div class="user-recipe">
+	    		<h2>投稿レシピ</h2>
+	    			<% @recipes.each do |recipe| %>
+	    			<table class="table table-hover">
+					      <th><%= attachment_image_tag recipe, :recipe_image, size: "180x180" %></th>
+					      <th><h2><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></h2></th>
+					      <th></th>
+					      <th></th>
+					      <th></th>
+				    </table>
+			    <% end %>
+		    </div>
+		    <%= link_to "退会手続き", user_path(@user.id), class: "btn-flat-delete", method: :delete, "data-confirm" => "本当に退会してよろしいですか？" %>
 	    </div>
 	</div>
 </div>

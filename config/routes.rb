@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :recipes do
-    resource :reviews, only: %i[create destroy]
-    resource :favorites, only: %i[create destroy]
+    resources :reviews, only: [:new, :create, :destroy] do
+      resources :review_replays, only: [:new, :create, :destroy]
+    end
+    resource :favorites, only:[:create, :destroy]
   end
 
   resources :shops

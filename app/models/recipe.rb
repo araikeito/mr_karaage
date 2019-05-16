@@ -10,6 +10,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
+  has_many :review_replays, dependent: :destroy
 
   attachment :recipe_image
 

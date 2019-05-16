@@ -19,9 +19,10 @@
 				<% end %>
 			</div>
 			<div class="col-lg-7">
+				<h2>レシピ一覧</h2>
 				<% @recipes.each do |recipe| %>
 			        <div claass="recipe-feace">
-			        	<table class="table table-striped">
+			        	<table class="table table-hover">
 							<th><%= attachment_image_tag recipe, :recipe_image, size: "180x180" %></th>
 							<th><h3><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></h3></th>
 							<th></th>

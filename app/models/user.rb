@@ -9,6 +9,9 @@ class User < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :reviews, dependent: :destroy
   has_many :recipes, dependent: :destroy
+  has_many :review_replays, dependent: :destroy
+
+  attachment :user_image
 
   acts_as_paranoid
 

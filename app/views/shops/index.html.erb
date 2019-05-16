@@ -8,26 +8,28 @@
 			<div class="col-lg-5">
 			</div>
 			<div class="col-lg-7">
-				<%= search_form_for @search do |f| %>
-				<%= f.check_box :soysauce_eq, {}, checked_value = "1", uncheced_value = nil %>
-			    <%= f.label :soysauce, "しょうゆ系" %>
-			    <%= f.check_box :salt_eq, {}, checked_value = "1", uncheced_value = nil %>
-			    <%= f.label :salt, "塩系" %>
-			    <%= f.check_box :other_eq, {}, checked_value = "1", uncheced_value = nil %>
-			    <%= f.label :other, "その他" %>
-				<%= f.submit "検索" %>
-				<% end %>
-				<% @shops.each do |shop| %>
-			        <div claass="recipe-feace">
-			        	<div class="recipe-feace-item">
-			        		<table class="table table-striped">
-							<th><%= attachment_image_tag shop, :shop_image, size: "180x180", fallback: "noimage.png" %></th>
-							<th class="feace-item-show"><%= link_to shop.shop_name, shop_path(shop.id) %></th>
-						    <th class="shop-index-ranking">店評価<%= rating_for shop, 'shop_name', disable_after_rate: true, imdb_avg: true %></th>
-						    </table>
-					    </div>
-					</div>
+				<div class="search-taste">
+					<%= search_form_for @search do |f| %>
+						<%= f.check_box :soysauce_eq, {}, checked_value = "1", uncheced_value = nil %>
+					    <%= f.label :soysauce, "しょうゆ系" %>
+					    <%= f.check_box :salt_eq, {}, checked_value = "1", uncheced_value = nil %>
+					    <%= f.label :salt, "塩系" %>
+					    <%= f.check_box :other_eq, {}, checked_value = "1", uncheced_value = nil %>
+					    <%= f.label :other, "その他" %>
+					<%= f.submit "検索" %>
 					<% end %>
+			    </div>
+			    <div claass="recipe-feace">
+					<% @shops.each do |shop| %>
+				        <div class="recipe-feace-item">
+				        	<table class="table table-hover">
+								<th><%= attachment_image_tag shop, :shop_image, size: "180x180", fallback: "noimage.png" %></th>
+								<th class="feace-item-show"><%= link_to shop.shop_name, shop_path(shop.id) %></th>
+							    <th class="shop-index-ranking">店評価<%= rating_for shop, 'shop_name', disable_after_rate: true, imdb_avg: true %></th>
+							</table>
+						</div>
+					<% end %>
+				</div>
 					<%= paginate @shops %>
 			</div>
 		</div>

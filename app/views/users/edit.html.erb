@@ -5,6 +5,10 @@
 		<div class="edit-user">
 
 			<%= form_for(@user) do |f| %>
+			  <h2>プロフィール写真を設定しよう！</h2>
+			  <%= f.attachment_field :user_image %>
+			  <h2>自己紹介文を書こう！</h2>
+			  <%= f.text_field :introduction %>
 			  <h2>名前</h2>
 			  <%= f.text_field :name %>
 			  <h2>名前(カナ)</h2>

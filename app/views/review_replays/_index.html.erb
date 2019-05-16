@@ -1,0 +1,32 @@
+<div class="replay-zone">
+  <% @review_replays.each do |replay| %>
+        <%= link_to "#{replay.user.name}さん", user_path(replay.user.id) %>
+        <div class="review-content">
+          <%= replay.text %>
+          
+        </div>
+  <% end %>
+  <% if user_signed_in? %>
+    <%= form_with(model: [@recipe, review, ReviewReplay.new]) do |f| %>
+      <% if @review_replay.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@review_replay.errors.count, "error") %> prohibited this review_replay from being saved:</h2>
+            <ul>
+              <% @review_replay.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+        </div>
+      <% end %>
+        <div class="row">
+            <div class="form-group col-md-10">
+              <%= f.text_area :text, :placeholder => '返信をしてみましょう！', class:'form-control', rows:"1" %>
+            </div>
+
+            <div class="actions col-md-2">
+              <%= f.submit "返信", class:"btn btn-sm standard-button" %>
+            </div>
+    <% end %>
+        </div>
+  <% end %>
+</div>

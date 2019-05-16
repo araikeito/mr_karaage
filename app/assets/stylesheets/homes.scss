@@ -40,6 +40,14 @@
 .home-center-left{
 	width: 50%;
 	float: left;
+	line-height: 40px;
+	margin-top: 120px;
+	font-size: 20px;
+}
+
+.home-shop-link{
+	text-align: right;
+	margin-right: 50px;
 }
 
 .home-under{
@@ -61,6 +69,24 @@
 	margin: 0 auto;
 }
 
+.home-center-left-text{
+	font-family: 'Hiragino Mincho Pro';
+}
+
+.home-under-left-text{
+	width: 50%;
+	float: left;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 120px;
+	font-family: 'Hiragino Mincho Pro';
+	font-size: 20px;
+}
+
+.home-recipe-link{
+	text-align: right;
+	margin-right: 50px;
+}
 
 .home-center-left-box{
 	text-align: center;

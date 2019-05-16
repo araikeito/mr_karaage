@@ -1,27 +1,41 @@
 <div class="home">
 	<div class="home-header">
 	</div>
-	<div class="home-center clearfix">
-		<div class="home-center-right">
-			<div class="home-right-image">
+	<div class="container">
+		<div class="row">
+			<div class="home-center clearfix">
+				<div class="home-center-right">
+					<div class="home-right-image">
+					</div>
+				</div>
+				<div class="home-center-left">
+					<div class="home-center-left-box">
+						<p class="home-center-left-text">色んな唐揚げを掲載しています。<br>
+							自分好みの唐揚げも見つかるはず！<br>
+						    ぜひ寄っていってください！！
+						</p>
+						<div class="home-shop-link">
+				           <%= link_to "店を探す", shops_path, class: "btn btn-lg btn-success" %>
+				        </div>
+				    </div>
+			    </div>
 			</div>
-		</div>
-		<div class="home-center-left">
-			<div class="home-center-left-box">
-				<p class="home-center-left-text">色んな唐揚げを掲載しています。<br>
-					自分好みの唐揚げも見つかるはず！<br>
-				    ぜひ寄っていってください！！</p>
-				<div class="home-shop-box">
-		           <%= link_to "店を探す", shops_path, class: "btn btn-lg btn-success" %>
-		        </div>
-		    </div>
+			<div class="home-under clearfix">
+				<div class="home-under-right">
+					<div class="home-under-right-image">
+					</div>
+				</div>
+				<div class="home-nuder-left">
+					<div class="home-under-left-box">
+						<p class="home-under-left-text">自分好みの唐揚げレシピを探したり<br>
+							オリジナルの唐揚げを投稿しよう！！
+						</p>
+						<div class="home-recipe-link">
+							<%= link_to "レシピを見る", recipes_path, class: "btn btn-lg btn-success" %>
+					    </div>
+				    </div>
+			    </div>
+			</div>
 	    </div>
-	</div>
-	<div class="home-under clearfix">
-		<div class="home-under-right">
-			<div class="home-under-right-image">
-			</div>
-		</div>
-		<%= link_to "レシピを見る", recipes_path, class: "btn btn-lg btn-success" %>
-	</div>
+    </div>
 </div>

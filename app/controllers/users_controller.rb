@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @recipes = @user.recipes
   end
 
   def edit
@@ -38,7 +39,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :email, :name, :name_kana, :address, :phone_number
+      :email, :name, :name_kana, :address, :phone_number, :user_image, :introduction
     )
   end
 end

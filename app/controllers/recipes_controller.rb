@@ -9,6 +9,9 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @review = Review.new
+    @reviews = @recipe.reviews
+    @review_replays = @recipe.review_replays.includes(:user)
+    @review_replay = @recipe.review_replays.build(user_id: current_user.id) if current_user
   end
 
   def create
