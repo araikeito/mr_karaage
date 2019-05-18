@@ -11,7 +11,7 @@
     <div class="modal-body">
 
       <div class="form-group field">
-        <%= f.label :タイトル, class: "form-control-label" %>
+        <h3>タイトル(3~30字)</h3>
         <%= f.text_field :recipe_name, placeholder:"例) 男の唐揚げ", class: "recipe-name-form" %>
       </div>
       <div class="form-group field">
@@ -19,11 +19,15 @@
         <%= f.attachment_field :recipe_image %>
       </div>
       <div class="form-group field">
+        <h3>動画があるなら一緒に投稿しよう！</h3>
+        <%= f.file_field :video %>
+      </div>
+      <div class="form-group field">
         <%= f.label :お肉部位, class: "form-control-label" %>
         <%= f.select :meat_site, [["もも肉", "もも肉"], ["むね肉", "むね肉"], ["なんこつ", "なんこつ"], ["手羽先", "手羽先"], ["せせり", "せせり"], ["とり皮", "とり皮"], ["砂肝", "砂肝"]], :prompt => "選択してください" %>
       </div>
       <div class="form-group field">
-        <h3>材料 / 分量</h3>
+        <h3>材料(1~20字) / 分量(1~10字)</h3>
         <%= f.fields_for :materials do |material| %>
             <%= render 'material_fields', f: material %>
         <% end %>
@@ -32,7 +36,7 @@
           </div>
       </div>
       <div class="form-group field">
-        <h3>工程順序 / 内容</h3>
+        <h3>工程順序 / 内容(5~60字)</h3>
         <%= f.fields_for :progresses do |progress| %>
             <%= render 'progress_fields', f: progress %>
         <% end %>
@@ -44,10 +48,12 @@
         <%= f.label :最後に一言アドバイス！, class: "form-control-label" %>
         <%= f.text_field :advice, placeholder:"例) 揚げすぎるとかたくなるよ！", class: "advice-form" %>
       </div>
+      <div class="submit-field">
+        <%= f.submit '投稿する' %>
+      </div>
     </div>
     <div class="modal-footer actions">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      <%= f.submit '投稿する' %>
     </div>
     <% end %>
   </div>

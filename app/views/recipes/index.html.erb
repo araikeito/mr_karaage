@@ -8,14 +8,16 @@
 		<div class="row">
 			<div class="col-lg-5">
 				<% @rank.each.with_index(1) do |rank, i| %>
-				    <h2 class="recipe-ranking">
-				    	<div class="recipe-rank">
-						  <%= "第#{i}位" %>
-						</div>
-						<div class="rank-name">
-						  <%= rank.recipe_name %>
-						</div>
-					</h2>
+				　　 <div class="rank-box">
+					    <h2 class="recipe-ranking">
+					    	<div class="recipe-rank">
+							  <%= "第#{i}位" %>
+							</div>
+							<div class="rank-name">
+							  <%= rank.recipe_name %>
+							</div>
+						</h2>
+				    </div>
 				<% end %>
 			</div>
 			<div class="col-lg-7">
@@ -24,7 +26,7 @@
 			        <div claass="recipe-feace">
 			        	<table class="table table-hover">
 							<th><%= attachment_image_tag recipe, :recipe_image, size: "180x180" %></th>
-							<th><h3><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></h3></th>
+							<th><h3><%= link_to recipe.recipe_name, recipe_path(recipe.id), :style=>"color:black;" %></h3></th>
 							<th></th>
 					    </table>
 					</div>

@@ -2,17 +2,30 @@
 <div class="container">
 	<div class="row">
 		<div class="recipe-show">
-			<h1><%= @recipe.recipe_name %></h1>
-			<%= attachment_image_tag @recipe, :recipe_image %>
-			<h3 class="recipe-item"> 部位
-				<%= @recipe.meat_site %>
-			</h3>
-			<% @recipe.materials.each do |material| %>
-			    <h3 class="recipe-item">
-				    <%= material.material_name %>
-				    <%= material.material_quantity %>
-				</h3>
-			<% end %>
+			<div class="recipe-taitle">
+				<h2>タイトル</h2>
+				<h1 class="recipe-name"><%= @recipe.recipe_name %></h1>
+		    </div>
+		    <div class="recipe-box clearfix">
+			    <div class="recipe-image">
+					<%= attachment_image_tag @recipe, :recipe_image, size: "500x500", fallback: "noimage.png" %>
+			    </div>
+			    <div class="recipe-item">
+					<h2 class="meat-site"> 部位 :
+						<%= @recipe.meat_site %>
+					</h2>
+					<% @recipe.materials.each do |material| %>
+					    <div class="material-box">
+						    <span class="material-item"> 材料  :
+							    <%= material.material_name %> /
+							</span>
+							<span class="material-item"> 分量  :
+							    <%= material.material_quantity %>
+							</span>
+					    </div>
+					<% end %>
+			    </div>
+		    </div>
 			<div class="progress-each clearfix">
 			<% @recipe.progresses.each do |f| %>
 				<div class="progress-box">
@@ -20,36 +33,36 @@
 						<%= attachment_image_tag f, :material_image, size: "200x200", fallback: "noimage.png" %>
 					</div>
 				    <h3 class="progress-item">
-					    	<%= f.progress_number %>
-					    	  <div class="progress-text">
-						    	<%= f.progress_text %>
-						      </div>
-				    </h3>
+					    <%= f.progress_number %>
+					</h3>
+					<h4>
+			    	    <div class="progress-text">
+				    	    <%= f.progress_text %>
+				        </div>
+				    </h4>
 				</div>
 			<% end %>
 			</div>
 			<div class="accessories">
 				<div class="advice-box">
 					<h3 class="recipe-advice"> 一言アドバイス！
-						<h4><%= @recipe.advice %></h4>
+						<h2><%= @recipe.advice %></h2>
 					</h3>
 			    </div>
-
-				<% if @recipe.favorited_by?(current_user) %>
-				  <li>
-				    <%= link_to recipe_favorites_path(@recipe), method: :delete do %>
-				      <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
-				      <%= @recipe.favorites.count %> いいね
-				    <% end %>
-				  </li>
-				<% else %>
-				  <li>
-				    <%= link_to recipe_favorites_path(@recipe), method: :post do %>
-				      <i class="fa fa-heart-o" aria-hidden="true" style="color: red;"></i>
-				      <%= @recipe.favorites.count %> いいね
-				    <% end %>
-				  </li>
+			    <% if user_signed_in? %>
+				    <div id="favorites_buttons_<%= @recipe.id %>">
+						<%= render partial: 'favorites/favorite', locals: { recipe: @recipe, favorites: @favorites} %>
+					</div>
 				<% end %>
+			    <div class="video">
+			    	<h3>調理動画</h3>
+			    	<% if @recipe.video.present? %>
+			    	    <%= video_tag @recipe.video_url.to_s,loop: true, controls: true, size: "600x400" %>
+			    	<% else %>
+			    	    <h4> 調理動画はありません</h4>
+			    	<% end %>
+			    </div>
+
 				<div class="comment">
 				    <h4><i class="fa fa-comment fa-fw"></i>コメント一覧</h4>
 				    <div id="reviews_area">

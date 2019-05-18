@@ -2,31 +2,45 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+/*---shop-new---*/
 .shop-new{
 	min-height: 100vh;
     position: relative;
 }
+/*---shop-newここまで---*/
 
+/*---shop-index---*/
 .shop-index{
-	min-height: 100vh;
-    position: relative;
-}
-
-.shop-show{
 	min-height: 100vh;
     position: relative;
 }
 
 .shop-index-top{
 	height: 400px;
+	background-image: url(img/main_img.jpg);
+	background-size: 100% 100%;
 }
 
-.shop-top-font{
-	text-align: center;
-	line-height: 400px;
+.search-taste{
+	padding-bottom: 30px;
+	margin-top: 50px;
 }
 
+.feace-item-show{
+	font-size: 20px;
+}
+
+.shop-index-review{
+	font-size: 30px;
+}
+
+/*---shop-indexここまで---*/
+
+/*---shop-show---*/
+.shop-show{
+	min-height: 100vh;
+    position: relative;
+}
 
 .shop-show-top{
 	height: 200px;
@@ -45,17 +59,7 @@
 	text-align: center;
 }
 
-.shop-index-ranking{
-	font-size: 30px;
-}
+/*---shop-showここまで---*/
 
-.search-taste{
-	padding-bottom: 30px;
-}
-
-
-.feace-item-show{
-	font-size: 20px;
-}
 
 

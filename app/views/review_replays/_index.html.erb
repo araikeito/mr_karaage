@@ -2,8 +2,14 @@
   <% @review_replays.each do |replay| %>
         <%= link_to "#{replay.user.name}さん", user_path(replay.user.id) %>
         <div class="review-content">
-          <%= replay.text %>
-          
+          <p> 返信 :<%= replay.text %></p>
+          <% if replay.user == current_user %>
+            <p class="review-delete">
+              <%= link_to recipe_review_review_replay_path(replay.recipe_id, replay.review_id, replay.id), method: :delete, remote: true do %>返信削除
+                <i class="fa fa-trash fa-fw"></i>
+              <% end %>
+            </p>
+          <% end %>
         </div>
   <% end %>
   <% if user_signed_in? %>
@@ -24,7 +30,7 @@
             </div>
 
             <div class="actions col-md-2">
-              <%= f.submit "返信", class:"btn btn-sm standard-button" %>
+              <%= f.submit "返信" %>
             </div>
     <% end %>
         </div>

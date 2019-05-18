@@ -1,10 +1,10 @@
 <% unless reviews.present? %>
-  <h>コメントはまだありません。気軽にコメントしてみましょう！</p>
+  <P>コメントはまだありません。気軽にコメントしてみましょう！</p>
 <% end %>
 
 <% reviews.each do |review| %>
     <% unless review.id.nil? %>
-        <p><%= review.user.name %> さんのコメント</p>
+        <p><%= link_to "#{review.user.name} さん", user_path(review.user.id) %> のコメント</p>
         <div class="comment-content">
             <p>内容：<%= review.review_text %></p>
             <% if review.user == current_user %>

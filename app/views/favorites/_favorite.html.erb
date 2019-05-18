@@ -1,0 +1,37 @@
+<% if user_signed_in? %>
+
+  <% unless recipe.favorite_user(current_user.id).blank? %>
+    <%= link_to recipe_favorites_path(recipe_id: recipe.id ,id: recipe.favorites[0].id), method: :delete, remote: true do %>
+      <div class="vertical_favorite">
+        <i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+          <%= recipe.favorites_count %> いいねを取り消す
+      </div>
+    <% end %>
+  <% else %>
+    <%= link_to recipe_favorites_path(recipe.id), method: :post, remote: true do %>
+      <div class="vertical_favorite">
+        <i class="fa fa-heart-o" aria-hidden="true" style="color: red;"></i>
+          <%= recipe.favorites_count %> いいねしてね
+      </div>
+    <% end %>
+  <% end %>
+
+<% else %>
+
+  <% if recipe.favorites_count > 0 %>
+    <div class="vertical_favorite">
+      <i class="material-icons red-text">favorite</i>
+      <span class="red-text">
+        <%= recipe.favorites_count %>
+      </span>
+    </div>
+    <% else %>
+    <div class="vertical_favorite">
+      <i class="material-icons grey-text text-darken-2">favorite_border</i>
+      <span class="grey-text text-darken-2">
+        <%= recipe.favorites_count %>
+      </span>
+    </div>
+  <% end %>
+
+<% end %>

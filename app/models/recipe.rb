@@ -12,7 +12,13 @@ class Recipe < ApplicationRecord
   has_many :reviews, dependent: :destroy
   has_many :review_replays, dependent: :destroy
 
-  validates :recipe_name, length: { in: 5..30 }
+  def favorite_user(user_id)
+   favorites.find_by(user_id: user_id)
+  end
+
+  mount_uploader :video, VideoUploader
+
+  validates :recipe_name, length: { in: 3..30 }
   validates :meat_site, presence: true
   validates :advice, length: { in: 1..30 }
 

@@ -1,17 +1,25 @@
 # frozen_string_literal: true
 
 class FavoritesController < ApplicationController
+  before_action :set_recipe
+
   def create
-    recipe = Recipe.find(params[:recipe_id])
-    favorite = current_user.favorites.new(recipe_id: recipe.id)
-    favorite.save
-    redirect_to recipe_path(recipe.id)
+    @favorite = Favorite.create(user_id: current_user.id, recipe_id: params[:recipe_id])
+    @favorites = Favorite.where(recipe_id: params[:recipe_id])
+    @recipe.reload
   end
 
   def destroy
-    recipe = Recipe.find(params[:recipe_id])
-    favorite = current_user.favorites.find_by(recipe_id: recipe.id)
+    favorite = Favorite.find_by(user_id: current_user.id, recipe_id: params[:recipe_id])
     favorite.destroy
-    redirect_to recipe_path(recipe.id)
+    @favorites = Favorite.where(recipe_id: params[:recipe_id])
+    @recipe.reload
   end
+
+  private
+
+  def set_recipe
+    @recipe = Recipe.find(params[:recipe_id])
+  end
+
 end
