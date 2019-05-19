@@ -15,8 +15,21 @@
 //= require ratyrate
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 //= require cocoon
+
+
+$(document).ready(function(){
+	$('#tab-contents .tab[id != "tab1"]').hide();
+	$('#tab-menu a').on('click', function() {
+  	$("#tab-contents .tab").hide();
+  	$("#tab-menu .active").removeClass("active");
+  	$(this).addClass("active");
+    $($(this).attr("href")).show();
+  return false;
+	});
+
+
+});
 

@@ -11,19 +11,19 @@
 		        	<h1><%= @shop.shop_name %></h1>
 		        	<%= attachment_image_tag @shop, :shop_image, size: '700x400' %>
 		        </div>
-		        	<h3 class="shop-item"> 住所
+		        	<h3 class="shop-item"> 住所 :
 		        		<%= @shop.shop_address %>
 		        	</h3>
-		        	<h3 class="shop-item"> 電話番号
+		        	<h3 class="shop-item"> 電話番号 :
 		        		<%= @shop.shop_phone_number %>
 		        	</h3>
-		        	<h3 class="shop-item"> 営業時間
+		        	<h3 class="shop-item"> 営業時間 :
 		        		<%= @shop.business_hours %>
 		        	</h3>
-		        	<h3 class="shop-item"> 平均予算
+		        	<h3 class="shop-item"> 平均予算 :
 		        		<%= @shop.average_price %>
 		        	</h3>
-		        	<h3>店の評価 : <%= rating_for @shop, 'shop_name', disable_after_rate: false %></h3>
+		        	<h3>店の評価<%= rating_for @shop, 'shop_name', disable_after_rate: false %></h3>
 
 		        	<iframe src="http://maps.google.co.jp/maps?q=<%= @shop.shop_address %>&output=embed&t=m&z=16&hl=ja" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="1170" height="500"></iframe>
 

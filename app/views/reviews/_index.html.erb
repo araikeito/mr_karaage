@@ -1,5 +1,9 @@
-<% unless reviews.present? %>
-  <P>コメントはまだありません。気軽にコメントしてみましょう！</p>
+<% if user_signed_in? %>
+    <% unless reviews.present? %>
+        <P>コメントはまだありません。気軽にコメントしてみましょう！</p>
+    <% end %>
+<% else %>
+    <P>コメントは会員登録を行ってください</P>
 <% end %>
 
 <% reviews.each do |review| %>

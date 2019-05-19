@@ -15,29 +15,65 @@
 				    <h2>自己紹介文 : <%= @user.introduction %></h2>
 			    </div>
 			    <div class="user-box">
-					<% if @user.id == current_user.id %>
-						<%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn-flat-success" %>
-				    <% end %>
+			    	<% if user_signed_in? %>
+						<% if @user.id == current_user.id %>
+							<%= link_to "プロフィール編集", edit_user_path(@user.id), class: "btn-flat-success" %>
+					    <% end %>
+					<% end %>
 	            </div>
 		    </div>
 		</div>
 
+    	<div class="user-recipe">
+	    	<ul id="tab-menu" class="clearfix">
+	    		<li><a href="#tab1" class="active">投稿レシピ</a></li>
+	    		<li><a href="#tab2" class="">お気に入り</a></li>
+	    	</ul>
+	    	<div id="tab-contents" class="clearfix">
+	    		<div id="tab1" class="tab">
+	    			<div class="user-recipe">
+	    				<h2>投稿レシピ</h2>
+					   	<% unless @recipes.present? %>
+					   	   <p>投稿レシピはありません</p>
+					   	<% end %>
+					   	<% @recipes.each do |recipe| %>
+						   	<table class="table table-hover">
+							     <th><%= attachment_image_tag recipe, :recipe_image, size: "180x180", fallback: "noimage.png" %></th>
+							     <th><h2><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></h2></th>
+							     <th></th>
+							     <th></th>
+							     <th></th>
+						    </table>
+					    <% end %>
+					</div>
+			    </div>
+			    <div id="tab2" class="tab">
+			    	<div class="favorite-user">
+					   	<h2>お気に入り</h2>
+					   	<% unless @favorites.present? %>
+					   	   <p>お気に入りレシピはありません</p>
+					   	<% end %>
+					   	<% @favorites.each do |favorite| %>
+						   	<table class="table table-hover">
+							   	<th><%= attachment_image_tag favorite.recipe, :recipe_image, size: "180x180", fallback: "noimage.png" %></th>
+							   	<th><h2><%= link_to favorite.recipe.recipe_name, recipe_path(favorite.recipe.id) %></h2></th>
+							   	<th></th>
+							   	<th></th>
+							   	<th></th>
+						   	</table>
+					   	<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
 	    <div class="row">
-	    	<div class="user-recipe">
-	    		<h2>投稿レシピ</h2>
-	    			<% @recipes.each do |recipe| %>
-	    			<table class="table table-hover">
-					      <th><%= attachment_image_tag recipe, :recipe_image, size: "180x180" %></th>
-					      <th><h2><%= link_to recipe.recipe_name, recipe_path(recipe.id) %></h2></th>
-					      <th></th>
-					      <th></th>
-					      <th></th>
-				    </table>
+	    	<% if user_signed_in? %>
+			    <% if @user.id == current_user.id %>
+			        <%= link_to "退会手続き", user_path(@user.id), class: "btn-flat-delete", method: :delete, "data-confirm" => "本当に退会してよろしいですか？" %>
 			    <% end %>
-		    </div>
-		    <% if @user.id == current_user.id %>
-		        <%= link_to "退会手続き", user_path(@user.id), class: "btn-flat-delete", method: :delete, "data-confirm" => "本当に退会してよろしいですか？" %>
 		    <% end %>
 	    </div>
 	</div>
 </div>
+
+

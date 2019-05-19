@@ -2,9 +2,11 @@
 <div class="container">
 	<div class="row">
 		<div class="recipe-show">
-			<div class="recipe-taitle">
-				<h2>タイトル</h2>
+			<div class="recipe-taitle-box">
+				<h2 class="recipe-taitle">レシピタイトル</h2>
 				<h1 class="recipe-name"><%= @recipe.recipe_name %></h1>
+				<h4>投稿者</h4>
+				<h3 class="recipe-user"><%= @recipe.user.name %></h3>
 		    </div>
 		    <div class="recipe-box clearfix">
 			    <div class="recipe-image">

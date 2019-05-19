@@ -2,7 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
 .clearfix::after{
   content: "";
   display: block;
@@ -24,6 +23,36 @@
 .profile-box{
 	margin-top: 50px;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#tab-menu li {
+  float: left;
+  list-style-type: none;
+  width: 25%;
+}
+
+#tab-menu a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  padding: 20px;
+  text-align: center;
+  background: #000;
+  border: 1px solid #000;
+  border-bottom: none;
+}
+
+#tab-menu .active {
+  background: #fff;
+  color: #000;
+}
+
+
 
 .image-box{
 	width: 300px;

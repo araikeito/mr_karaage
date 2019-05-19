@@ -48,12 +48,10 @@
         <%= f.label :最後に一言アドバイス！, class: "form-control-label" %>
         <%= f.text_field :advice, placeholder:"例) 揚げすぎるとかたくなるよ！", class: "advice-form" %>
       </div>
-      <div class="submit-field">
-        <%= f.submit '投稿する' %>
-      </div>
     </div>
     <div class="modal-footer actions">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <%= f.submit class: "btn btn-primary" %>
     </div>
     <% end %>
   </div>

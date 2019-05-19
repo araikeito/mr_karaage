@@ -57,6 +57,18 @@
 	padding-bottom: 70px;
 }
 
+.rank-taitle{
+	text-align: center;
+}
+
+.recipe-rank{
+	margin: 10px 0;
+}
+
+.rank-image{
+	margin: 15px 0;
+}
+
 /*---recipe-indexここまで---*/
 
 
@@ -74,9 +86,16 @@
     position: relative;
 }
 
-.recipe-taitle{
+.recipe-taitle-box{
 	width: 100%;
-	height: 150px;
+	height: 200px;
+}
+
+.recipe-taitle{
+	text-align: center;
+}
+
+.recipe-name{
 	text-align: center;
 }
 
