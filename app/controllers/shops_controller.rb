@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ShopsController < ApplicationController
+  before_action :authenticate_user!, only:[:new, :edit, :create, :destroy, :update]
+  before_action :ensure_correct_user, only:[:new, :edit, :create, :destroy, :update]
   def index
     @search = Shop.ransack(params[:q])
     @shops = if params[:q]
@@ -38,6 +40,13 @@ class ShopsController < ApplicationController
     shop = Shop.find(params[:id])
     shop.update(shop_params)
     redirect_to shop_path(shop)
+  end
+
+  def ensure_correct_user
+    if current_user.admin == false
+      flash[:notice] = "許可されていないアクションです"
+      redirect_to root_path
+    end
   end
 
   private

@@ -2,6 +2,8 @@
 
 class ReviewsController < ApplicationController
   before_action :set_recipe, only: [:create, :destroy]
+  before_action :authenticate_user!
+
 
   def new
     @review = Review.new

@@ -23,7 +23,9 @@
 		        	<h3 class="shop-item"> 平均予算 :
 		        		<%= @shop.average_price %>
 		        	</h3>
-		        	<h3>店の評価<%= rating_for @shop, 'shop_name', disable_after_rate: false %></h3>
+		        	<% if user_signed_in? %>
+			        	<h3>店の評価<%= rating_for @shop, 'shop_name', disable_after_rate: false %></h3>
+		        	<% end %>
 
 		        	<iframe src="http://maps.google.co.jp/maps?q=<%= @shop.shop_address %>&output=embed&t=m&z=16&hl=ja" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" width="1170" height="500"></iframe>
 

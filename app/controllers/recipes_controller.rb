@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RecipesController < ApplicationController
+  before_action :authenticate_user!, only:[:new, :edit, :create, :destroy, :update]
+
   def index
     @recipes = Recipe.all.page(params[:page]).per(10).reverse_order
     @rank = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(5).pluck(:recipe_id))

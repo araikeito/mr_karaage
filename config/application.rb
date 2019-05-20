@@ -19,6 +19,6 @@ module MrKaraage
     # the framework and any gems in your application.
 
 
-    config.web_console.whitelisted_ips = '10.0.2.2'
+    # config.web_console.whitelisted_ips = '10.0.2.2'
   end
 end
