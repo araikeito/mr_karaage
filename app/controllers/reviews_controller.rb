@@ -16,7 +16,10 @@ class ReviewsController < ApplicationController
     set_replays
     set_replay
     if @review.save
+      flash[:notice] = "コメントしました。"
       render :index
+    else
+      flash[:notice] = "文字を入力してください。"
     end
   end
 
@@ -25,6 +28,7 @@ class ReviewsController < ApplicationController
     set_replays
     set_replay
     if @review.destroy
+      flash[:notice] = "コメントを削除しました。"
       render :index
     end
   end

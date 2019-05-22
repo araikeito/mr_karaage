@@ -18,7 +18,7 @@
 							    <%= rank.recipe_name %>
 							</div>
 							<div class="rank-image">
-							    <%= attachment_image_tag rank, :recipe_image, size: "150x150", fallback: "noimage.png" %>
+							    <%= attachment_image_tag rank, :recipe_image, size: "150x150", fallback: "noimage.png", class: "rank-image" %>
 							</div>
 						</h2>
 				    </div>
@@ -28,12 +28,12 @@
 				<h2>レシピ一覧</h2>
 				<% @recipes.each do |recipe| %>
 			        <div claass="recipe-feace">
-			        	<table class="table table-hover">
-							<th><%= attachment_image_tag recipe, :recipe_image, size: "180x180", fallback: "noimage.png" %></th>
-							<th><h2><%= link_to recipe.recipe_name, recipe_path(recipe.id), :style=>"color:black;""font-family: 'Hiragino Mincho Pro';" %></h2></th>
-							<th><p>レシピ投稿者</p><h4><%= link_to recipe.user.name, user_path(recipe.user.id), :style=>"color:black;" %> さん</h4></th>
-							<th></th>
-					    </table>
+				        	<table class="table table-hover">
+								<th><%= attachment_image_tag recipe, :recipe_image, size: "180x180", fallback: "noimage.png" %></th>
+								<th><h2><%= link_to recipe.recipe_name, recipe_path(recipe.id), :style=>"color:black;""font-family: 'Hiragino Mincho Pro';" %></h2></th>
+								<th><p>レシピ投稿者</p><h4><%= link_to recipe.user.name, user_path(recipe.user.id), :style=>"color:black;" %> さん</h4></th>
+								<th></th>
+						    </table>
 					</div>
 					<% end %>
 					<%= paginate @recipes %>

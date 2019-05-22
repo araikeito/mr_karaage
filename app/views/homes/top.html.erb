@@ -1,13 +1,25 @@
 <div class="home">
 	<div class="home-header">
-		<%= video_tag("img/11406336.mp4", :autoplay => true, :loop => true, :muted => true, :size => '1450x500') %>
+		<div class="theTarget">
+<!-- 			<p class="home-header-taitle">唐揚げを愛するものたちよ...</p>
+ -->			<%= image_tag("img/PAK85_syokutakubkaraage20150203185651_TP_V.jpg") %>
+                <%= image_tag("img/f08ee027de94.jpg") %>
+                <%= image_tag("img/image.jpeg") %>
+		</div>
+	</div>
+	<div class="icon-box">
+		<div class="icon-item" style="font-size:70px;">
+		    <i class="glyphicon glyphicon-cutlery" ></i>
+	    </div>
 	</div>
 	<div class="container">
 		<div class="row">
 			<div class="home-center clearfix">
 				<div class="home-center-right">
-					<div class="home-right-image">
-					</div>
+					<%= link_to shops_path do %>
+						<div class="home-right-image">
+						</div>
+					<% end %>
 				</div>
 				<div class="home-center-left">
 					<div class="home-center-left-box">
@@ -21,10 +33,17 @@
 				    </div>
 			    </div>
 			</div>
+			<div class="icon-box">
+				<div class="icon-item" style="font-size:70px;">
+					<i class="glyphicon glyphicon-pencil" ></i>
+				</div>
+			</div>
 			<div class="home-under clearfix">
 				<div class="home-under-right">
-					<div class="home-under-right-image">
-					</div>
+					<%= link_to recipes_path do %>
+						<div class="home-under-right-image">
+						</div>
+					<% end %>
 				</div>
 				<div class="home-nuder-left">
 					<div class="home-under-left-box">
@@ -40,3 +59,36 @@
 	    </div>
     </div>
 </div>
+
+<script>
+$("document").ready(function() {
+    $(".theTarget").skippr();
+});
+
+// オプションを指定してSkipprの実行
+$(".theTarget").skippr({
+    // スライドショーの変化 ("fade" or "slide")
+    transition : 'fade',
+    // 変化に係る時間(ミリ秒)
+    speed : 2500,
+    // easingの種類
+    easing : 'easeOutQuart',
+    // ナビゲーションの形("block" or "bubble")
+    navType : 'block',
+    // 子要素の種類("div" or "img")
+    childrenElementType : 'div',
+    // ナビゲーション矢印の表示(trueで表示)
+    arrows : true,
+    // スライドショーの自動再生(falseで自動再生なし)
+    autoPlay : true,
+    // 自動再生時のスライド切替間隔(ミリ秒)
+    autoPlayDuration : 4000,
+    // キーボードの矢印キーによるスライド送りの設定(trueで有効)
+    keyboardOnAlways : true,
+    // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
+    hidePrevious : false
+});
+
+</script>
+
+

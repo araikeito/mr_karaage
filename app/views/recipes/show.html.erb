@@ -67,6 +67,11 @@
 
 				<div class="comment">
 				    <h4><i class="fa fa-comment fa-fw"></i>コメント一覧</h4>
+				    <% if flash[:notice] %>
+				      <div class="flash">
+				        <h3><%= flash[:notice] %></h3>
+				      </div>
+				    <% end %>
 				    <div id="reviews_area">
 				    	<%= render partial: 'reviews/index', locals: { reviews: @reviews } %>
 				    </div>

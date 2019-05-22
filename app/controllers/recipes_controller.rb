@@ -44,7 +44,7 @@ class RecipesController < ApplicationController
   def new
     @recipe = Recipe.new
     respond_to do |format|
-      format.html{ redirect_to @recipe, notice: 'Recipe was successfully created.' }
+      format.html{ redirect_to @recipe, notice: 'レシピを投稿しました！' }
       format.js {}
     end
   end

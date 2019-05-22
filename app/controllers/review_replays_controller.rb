@@ -13,8 +13,9 @@ class ReviewReplaysController < ApplicationController
 	  @review_replay.user_id = current_user.id
 	  @review_replay.review_id = params[:review_id]
 	  set_replays
-	  if @review_replay.save
-	  	render :index
+	  if
+		@review_replay.save
+		render :index
 	  end
 	end
 

@@ -12,7 +12,7 @@
   <body>
 
     <header>
-        <p class = "title-karaage"><%= link_to "Mr.唐揚げ", homes_top_path, :style=>"color:white;" %></p>
+        <p class = "title-karaage"><%= link_to "Mr.からあげ", homes_top_path, :style=>"color:white;" %></p>
         <% if user_signed_in? %>
                <span class="user_name">&nbsp;&nbsp;
                 <%= current_user.name %> さん</span>
@@ -65,7 +65,7 @@
     </header>
     <%= yield %>
     <footer>
-      <h2 class="under-karaage">Mr.唐揚げ</h2>
+      <h2 class="under-karaage">Mr.からあげ</h2>
     </footer>
   </body>
 </html>

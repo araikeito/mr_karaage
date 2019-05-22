@@ -8,6 +8,7 @@
 
 <% reviews.each do |review| %>
     <% unless review.id.nil? %>
+    <div class="balloon1">
         <p><%= link_to "#{review.user.name} さん", user_path(review.user.id) %> のコメント</p>
         <div class="comment-content">
             <p>内容：<%= review.review_text %></p>
@@ -17,5 +18,6 @@
             <% end %>
         </div>
     <% end %>
+    </div>
     <%= render partial: 'review_replays/index', locals: { review: review} %>
 <% end %>
