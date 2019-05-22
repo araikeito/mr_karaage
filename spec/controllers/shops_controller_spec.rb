@@ -29,7 +29,7 @@ RSpec.describe ShopsController, type: :controller do
 		context "お店詳細ページが表示される" do
 			before do
 				@article = Shop.new
-				@article.shop_name="test"
+				@article.shop_name = "test"
 				@article.shop_address ="test_address"
 				@article.shop_phone_number = "09012341234"
 				@article.business_hours = "12"

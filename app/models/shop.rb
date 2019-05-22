@@ -7,7 +7,6 @@ class Shop < ApplicationRecord
   validates :shop_name, presence: true
   validates :shop_phone_number, presence: true
   validates :shop_address, presence: true
-  validates :shop_address, presence: true
 
   attachment :shop_image
 
