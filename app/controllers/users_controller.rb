@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
+    before_action :authenticate_user!, only:[:edit, :destroy, :update]
+    before_action :ensure_correct_user, only:[ :destroy, :index]
+
   def index
     @users = User.all.page(params[:page]).per(5).reverse_order
   end
@@ -32,6 +35,13 @@ class UsersController < ApplicationController
     else
       @recipes.destroy
       @user.destroy
+      redirect_to root_path
+    end
+  end
+
+  def ensure_correct_user
+    if current_user.admin == false
+      flash[:notice] = "許可されていないアクションです"
       redirect_to root_path
     end
   end

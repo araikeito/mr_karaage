@@ -7,6 +7,6 @@ FactoryBot.define do
     phone_number {"111-1111-1111"}
     password {"araiarai"}
     password_confirmation {"araiarai"}
-    user
   end
 end
+

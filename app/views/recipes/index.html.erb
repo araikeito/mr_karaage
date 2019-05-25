@@ -1,13 +1,15 @@
 
 <div class="recipe-index">
 	<div class="recipe-index-top">
-		<p class="recipe-top-font">見出し</p>
+		<div class="recipe-icon-top">
+		    <i class="glyphicon glyphicon-book" style="font-size:120px;"></i>
+	    </div>
+	    <p class="icon-text"> レシピ一覧</p>
 	</div>
 
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-4">
-				<h2 class="rank-taitle">人気レシピランキング</h2>
+				<h2 class="rank-taitle">人気レシピ</h2>
 				<% @rank.each.with_index(1) do |rank, i| %>
 				　　 <div class="rank-box">
 					    <h2 class="recipe-ranking">
@@ -18,26 +20,25 @@
 							    <%= rank.recipe_name %>
 							</div>
 							<div class="rank-image">
-							    <%= attachment_image_tag rank, :recipe_image, size: "150x150", fallback: "noimage.png", class: "rank-image" %>
+							    <%= attachment_image_tag rank, :recipe_image, size: "170x170", fallback: "noimage.png", class: "rank-image" %>
 							</div>
 						</h2>
 				    </div>
 				<% end %>
+			<h2 class="recipe-index-taitle ">レシピ一覧</h2>
+			<div claass="recipe-feace clearfix">
+			    <% @recipes.each do |recipe| %>
+			        	<div class="recipe-each">
+							<%= attachment_image_tag recipe, :recipe_image, size: "370x270", fallback: "noimage.png" %>
+							<div class="recipe-mini-box">
+								<div class="recipe-index-item"><h3><%= link_to recipe.recipe_name, recipe_path(recipe.id), :style=>"color:black;""font-family: 'Hiragino Mincho Pro';" %></h3></div>
+								<div class="recipe-index-item"><h3><i class="glyphicon glyphicon-user" ></i> レシピ投稿者</h3></div>
+				                <div class="recipe-index-item"><h4><%= link_to recipe.user.name, user_path(recipe.user.id), :style=>"color:black;" %> さん</h4></div>
+			                </div>
+					    </div>
+				<% end %>
 			</div>
-			<div class="col-lg-8">
-				<h2>レシピ一覧</h2>
-				<% @recipes.each do |recipe| %>
-			        <div claass="recipe-feace">
-				        	<table class="table table-hover">
-								<th><%= attachment_image_tag recipe, :recipe_image, size: "180x180", fallback: "noimage.png" %></th>
-								<th><h2><%= link_to recipe.recipe_name, recipe_path(recipe.id), :style=>"color:black;""font-family: 'Hiragino Mincho Pro';" %></h2></th>
-								<th><p>レシピ投稿者</p><h4><%= link_to recipe.user.name, user_path(recipe.user.id), :style=>"color:black;" %> さん</h4></th>
-								<th></th>
-						    </table>
-					</div>
-					<% end %>
-					<%= paginate @recipes %>
-			</div>
+			<%= paginate @recipes %>
 		</div>
 	</div>
 </div>

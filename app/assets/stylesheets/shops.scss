@@ -37,7 +37,7 @@
 }
 
 .feace-item-show{
-	font-size: 20px;
+	font-size: 30px;
 }
 
 .shop-index-review{
@@ -53,15 +53,36 @@
 }
 
 .shop-show-top{
-	height: 200px;
+	width: 100%;
+	height: 300px;
+	background-image: url(img/IMG_4946.jpg);
+	background-size: cover;
+	background-position: center;
+	margin-top: -20px;
 }
 
 .shop-show-top-font{
+	font-size: 80px;
 	text-align: center;
-	line-height: 200px;
+	line-height: 300px;
+	letter-spacing: 30px;
+	font-family: 'Hiragino Mincho Pro';
+	color: white;
 }
 
 .shop-show-main{
+	width: 100%;
+	height: 200px;
+	text-align: center;
+}
+
+.show-shop-name{
+	font-size: 50px;
+	line-height: 200px;
+	letter-spacing: 20px;
+}
+
+.shop-img{
 	text-align: center;
 }
 

@@ -48,17 +48,37 @@
 	height: 400px;
 }
 
+.recipe-icon-top{
+	text-align: center;
+	padding-top: 80px;
+}
+
+.icon-text{
+	text-align: center;
+	font-size: 70px;
+	font-family: 'Hiragino Mincho Pro';
+}
+
 .recipe-top-font{
 	text-align: center;
 	line-height: 400px;
 }
 
-.rank-box{
-	padding-bottom: 70px;
+.rank-taitle{
+	font-size: 50px;
+	font-family: 'Hiragino Mincho Pro';
 }
 
-.rank-taitle{
+.rank-box{
+	width: 350px;
+	height: 350px;
+	padding: 70px 0;
 	text-align: center;
+	float: left;
+}
+
+.rank-name{
+	font-family: 'Hiragino Mincho Pro';
 }
 
 .recipe-rank{
@@ -68,6 +88,36 @@
 .rank-image{
 	margin: 15px 0;
 	border-radius: 50%;
+}
+
+.recipe-index-taitle{
+	font-family: 'Hiragino Mincho Pro';
+	display: inline-block;
+	font-size: 50px;
+	margin: 70px 0 ;
+}
+
+.recipe-feace{
+	width: 100%;
+	margin-top: 60px;
+	text-align: center;
+}
+
+.recipe-each{
+	width: 390px;
+	height: 467px;
+	text-align: center;
+	float: left;
+	margin: 50px 0;
+	padding-right: 20px;
+}
+
+.recipe-mini-box{
+	border: 1px solid #DDDDDD;
+}
+
+.recipe-index-item{
+	margin:40px 0;
 }
 
 /*---recipe-indexここまで---*/

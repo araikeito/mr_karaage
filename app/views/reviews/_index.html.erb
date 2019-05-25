@@ -8,16 +8,16 @@
 
 <% reviews.each do |review| %>
     <% unless review.id.nil? %>
-    <div class="balloon1">
-        <p><%= link_to "#{review.user.name} さん", user_path(review.user.id) %> のコメント</p>
         <div class="comment-content">
-            <p>内容：<%= review.review_text %></p>
+            <div class="balloon1">
+                <p>内容：<%= review.review_text %></p>
+            </div>
+            <p><%= link_to "#{review.user.name}", user_path(review.user.id) %> さんのコメント</p>
             <% if review.user == current_user %>
                 <p class="comment-delete"><%= link_to 'コメントを削除する', recipe_review_path(review.recipe_id, review.id), method: :delete, remote: true %><i class="fa fa-trash fa-fw"></i>
                 </p>
             <% end %>
         </div>
     <% end %>
-    </div>
     <%= render partial: 'review_replays/index', locals: { review: review} %>
 <% end %>

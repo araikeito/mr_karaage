@@ -18,9 +18,9 @@ class Recipe < ApplicationRecord
 
   mount_uploader :video, VideoUploader
 
-  validates :recipe_name, length: { in: 3..30 }
+  validates :recipe_name, length: { in: 3..30 }, presence: true
   validates :meat_site, presence: true
-  validates :advice, length: { in: 1..30 }
+  validates :advice, length: { in: 3..30 }
 
   attachment :recipe_image
 

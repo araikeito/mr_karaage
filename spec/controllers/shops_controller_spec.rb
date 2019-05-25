@@ -28,15 +28,49 @@ RSpec.describe ShopsController, type: :controller do
 	describe 'お店詳細ページ' do
 		context "お店詳細ページが表示される" do
 			before do
-				@article = Shop.new
-				@article.shop_name = "test"
-				@article.shop_address ="test_address"
-				@article.shop_phone_number = "09012341234"
-				@article.business_hours = "12"
-				@article.save
+				@shop = Shop.new
+				@shop.shop_name = "test"
+				@shop.shop_address ="test_address"
+				@shop.shop_phone_number = "09012341234"
+				@shop.business_hours = "12"
+				@shop.save
 			end
 			it 'リクエストは200 OKとなること' do
-				get :show, params:{id:@article.id}
+				get :show, params:{id:@shop.id}
+				expect(response.status).to eq 200
+			end
+		end
+	end
+
+	describe 'お店投稿ページ' do
+		context "お店投稿ページが表示される" do
+			before do
+				user = create(:user)
+				user.update(admin: true)
+				sign_in user
+				get :new
+			end
+			it 'リクエストは200 OKとなること' do
+				expect(response.status).to eq 200
+			end
+		end
+	end
+
+	describe 'お店編集ページ' do
+		context "お店編集ページが表示される" do
+			before do
+				user = create(:user)
+				user.update(admin: true)
+				sign_in user
+				@shop = Shop.new
+				@shop.shop_name = "test"
+				@shop.shop_address ="test_address"
+				@shop.shop_phone_number = "09012341234"
+				@shop.business_hours = "12"
+				@shop.save
+		    end
+			it 'リクエストは200 OKとなること' do
+				get :edit, params:{id:@shop.id}
 				expect(response.status).to eq 200
 			end
 		end

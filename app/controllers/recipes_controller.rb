@@ -5,7 +5,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all.page(params[:page]).per(10).reverse_order
-    @rank = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(5).pluck(:recipe_id))
+    @rank = Recipe.find(Favorite.group(:recipe_id).order('count(recipe_id) desc').limit(3).pluck(:recipe_id))
   end
 
   def show

@@ -1,8 +1,10 @@
 <div class="replay-zone">
   <% @review_replays.each do |replay| %>
-        <%= link_to "#{replay.user.name}さん", user_path(replay.user.id) %>
         <div class="review-content">
-          <p> 返信 :<%= replay.text %></p>
+          <div class="balloon1">
+            <p> 返信 :<%= replay.text %></p>
+          </div>
+          <p><%= link_to "#{replay.user.name}", user_path(replay.user.id) %> さんの返信</p>
           <% if replay.user == current_user %>
             <p class="review-delete">
               <%= link_to recipe_review_review_replay_path(replay.recipe_id, replay.review_id, replay.id), method: :delete, remote: true do %>返信削除
