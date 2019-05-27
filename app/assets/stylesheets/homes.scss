@@ -56,7 +56,8 @@
 .home-right-image{
 	width: 400px;
 	height: 300px;
-	background-image: url(183160_m.jpg);
+
+	background-image: image-url("183160_m.jpg");
 	background-size: cover;
 	margin: 0 auto;
 }
@@ -88,7 +89,7 @@
 .home-under-right-image{
 	width: 400px;
 	height: 300px;
-	background-image: url(karaage46202.JPG);
+	background-image: image-url("karaage46202.JPG");
 	background-size: cover;
 	margin: 0 auto;
 }

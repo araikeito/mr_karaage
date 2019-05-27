@@ -2,7 +2,7 @@
 
 class CreateShops < ActiveRecord::Migration[5.2]
   def change
-    create_table :shops do |t|
+    create_table :shops, :options => 'ENGINE=InnoDB ROW_FORMAT=DYNAMIC' do |t|
       t.string :shop_name
       t.text :shop_image
       t.integer :shop_phone_number
