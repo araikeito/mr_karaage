@@ -8,13 +8,16 @@
   clear: both;
 }
 
-
+/*---user-edit----*/
 .edit-user{
 	text-align: center;
 	min-height: 100vh;
   position: relative;
 }
 
+/*---user-editここまで---*/
+
+/*---user-show---*/
 .user-show-top{
   min-height: 100vh;
   position: relative;
@@ -65,12 +68,19 @@
 	margin-top: 40px;
 }
 
+.user-image{
+  border-radius: 50%;
+}
+
+/*---user-showここまで---*/
+
+/*---user-index---*/
+
 .user-index-top{
   min-height: 100vh;
   position: relative;
 }
 
+/*---user-indexここまで---*/
 
-.user-image{
-  border-radius: 50%;
-}
+
