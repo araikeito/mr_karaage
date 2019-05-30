@@ -10,6 +10,7 @@
 Things you may want to cover:
 
 * Ruby version
+  ruby '2.5.3'
 
 * System dependencies
 
