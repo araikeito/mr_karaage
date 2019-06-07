@@ -9,6 +9,7 @@
 
 	<div class="container">
 		<div class="row">
+			<div class="recipe-rank-box clearfix">
 				<h2 class="rank-taitle">人気レシピ</h2>
 				<% @rank.each.with_index(1) do |rank, i| %>
 				　　 <div class="rank-box">
@@ -25,6 +26,7 @@
 						</h2>
 				    </div>
 				<% end %>
+			</div>
 			<h2 class="recipe-index-taitle ">レシピ一覧</h2>
 			<div claass="recipe-feace clearfix">
 			    <% @recipes.each do |recipe| %>
